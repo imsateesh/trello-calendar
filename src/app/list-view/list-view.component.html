@@ -1,0 +1,124 @@
+<header class="pt-1">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-8">
+        <a class="navbar-brand" title="Deyo Group" alt="Deyo Group">
+          <img src="https://deyogroup.com/wp-content/uploads/logo-2.png" title="Deyo Group" alt="Deyo Group" />
+        </a>
+      </div>
+
+      <div class="col-2 loader">
+        <img src="assets/images/loading.gif" *ngIf="ready == false;">
+      </div>
+
+      <div class="col-2">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-item nav-link text-dark mr-2" href="javascript:void(0)" (click)="defaultView = 'list';">List</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link text-dark" href="javascript:void(0)" (click)="defaultView = 'calendar';">Calendar</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="bg-light pt-3 pb-3" *ngIf="defaultView == 'calendar'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <full-calendar [header]="{left: 'prev,next', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'}" defaultView="timeGridWeek" [plugins]="calendarPlugins" [events]="calendar"></full-calendar>
+      </div>
+    </div>
+  </div>
+</main>
+
+<main class="bg-light pt-3 pb-3" *ngIf="defaultView == 'list'">
+  <div class="container-fluid" *ngIf="ready == true;">
+    <div class="row">
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">Estimates <span class="badge badge-primary">{{estimate.length}}</span></div>
+
+          <ul class="list-group cards" id="estimates_ul">
+            <li class="list-group-item" *ngFor="let task of estimate" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">Tasks <span class="badge badge-primary">{{toDo.length}}</span></div>
+          <ul class="list-group cards">
+            <li class="list-group-item" *ngFor="let task of toDo" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">In Progress <span class="badge badge-primary">{{inProgress.length}}</span></div>
+          <ul class="list-group cards">
+            <li class="list-group-item" *ngFor="let task of inProgress" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">QA - TechInfini <span class="badge badge-primary">{{techinfiniQa.length}}</span></div>
+          <ul class="list-group cards">
+            <li class="list-group-item" *ngFor="let task of techinfiniQa" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">QA - DeyoGroup <span class="badge badge-primary">{{deyoQa.length}}</span></div>
+          <ul class="list-group cards">
+            <li class="list-group-item" *ngFor="let task of deyoQa" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="card">
+          <div class="card-header">Approved for Production <span class="badge badge-primary">{{pushToProduction.length}}</span></div>
+          <ul class="list-group cards">
+            <li class="list-group-item" *ngFor="let task of pushToProduction" >
+              <a href="{{task.shortUrl}}" title="{{task.name}}" target="_blank" class="d-block">{{task.name}}</a>
+              <small>&nbsp;{{task.labelBoard}}</small>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="ready == false;">
+    <div class="container-fluid pt-4 pb-2">
+      <p class="text-center">Loading, please wait ...</p>
+    </div>
+  </div>
+</main>

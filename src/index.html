@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Trello Calendar and List View</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="https://api.trello.com/1/client.js?key=352206beeb5228a44a7663d5304cb675"></script>
+
+  <script>
+    $(document).on( 'click', '.fc-event', function(e){
+      e.preventDefault();
+      window.open( $(this).attr('href'), '_blank' );
+    });
+
+    $('main').css('height', $(window).height() - $('header').height());
+  </script>
+</head>
+<body>
+  <app-root>&nbsp;&nbsp;Loading, please wait ...</app-root>
+</body>
+</html>

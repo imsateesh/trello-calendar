@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+.fc-event-container .fc-event {
+  position: static;
+}
+.fc-event-container .fc-complete {
+  text-decoration: line-through;
+}
+.cards {
+  height: calc(100vh - 145px);
+  overflow: auto;
+}
+.loader img {
+  width: 32px;
+  position: relative;
+  top: 12px;
+}
